@@ -9,7 +9,7 @@ before_install:
 script:
   - docker run -r CI=true rayln_matrix/docker_react_prac npm run test
 
-# Can you other provider
+# Can use other provider
 deploy:
   provider: elasticbeanstalk
   region: "find_region_in_url_of_your_elasticbeanstalk"

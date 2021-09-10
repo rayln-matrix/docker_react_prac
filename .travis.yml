@@ -1,0 +1,9 @@
+language: generic
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t rayln_matrix/docker_react_prac -f Dockerfile.dev .
+  - docker run -r CI=true rayln_matrix/docker_react_prac npm run test
+

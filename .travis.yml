@@ -5,5 +5,21 @@ services:
 
 before_install:
   - docker build -t rayln_matrix/docker_react_prac -f Dockerfile.dev .
+
+script:
   - docker run -r CI=true rayln_matrix/docker_react_prac npm run test
 
+# Can you other provider
+deploy:
+  provider: elasticbeanstalk
+  region: "find_region_in_url_of_your_elasticbeanstalk"
+  app: "your_app_name_in_elasticbeanstalk"
+  env: "your_app_env_in_elasticbeanstalk"
+  bucket_name: "check s3 bucket"
+  bucket_path: "app_name"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY #use travis_ci env varible
+  secret_access_key: $AWS_SECRET_KEY
+
+  
